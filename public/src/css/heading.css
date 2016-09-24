@@ -1,0 +1,288 @@
+/* general classes used in partial views */
+
+body {
+	background-color: #F7F7F7;
+}
+
+#grid{
+	position: relative;
+	/*padding-bottom: 20px;*/
+	font-family: 'Lato' sans-serif;
+	width: 82%;
+	background-color: #FFFFFF;
+	margin: 0 auto;
+}
+
+.links {
+	line-height: 70px;
+	text-align: center;
+	width: 100%;
+	list-style-type: none;
+	padding-left: 0px;
+}
+
+.navlink {
+	font-size: 20px;
+	font-family: 'Lato' sans-serif;
+	position: relative;
+	top: -30px;
+	opacity: 0;
+	display: inline-block;
+	width: 19%;
+	pointer-events: none;
+	cursor: default;
+}
+
+.navlink a {
+	pointer-events: none;
+	cursor:	default;
+	text-decoration: none;
+	color: #7ECEFD;
+}
+
+.logo {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	max-height: 74px;
+}
+
+.view {
+	opacity: 1;
+	top: 0px;
+	-webkit-transition: all .55s ease-in;
+}
+
+.view a {
+	cursor: auto;
+	pointer-events: auto;
+}
+
+@keyframes navbar {
+	from{width:0%;
+		display: none;}
+	to{width: 57.4%;
+		display: inline-block;}
+}
+
+@keyframes navbarsmall {
+	from {width: 0%;
+		display: none;}
+	to{width: 90%;
+		display: inline-block;
+	}
+}
+
+@keyframes swipe {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+#title {
+	padding-top: 30px;
+	clear: both;
+	text-align: center;
+}
+
+@media screen and (max-width: 767px) {	
+	#grid {
+		width: 90%;
+	}
+	#title {
+		padding-top: 0px;
+	}
+	.center {
+		border: none;
+		/*max-height: 75px;*/
+		width: 90%;
+		margin: auto;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: 999;
+		position: fixed;
+		text-align: center;
+		display: inline-block;
+		animation-duration: 1s;
+		animation-name: navbarsmall;
+	}
+  	.navbar .links {
+  		display: none;
+ 	}
+
+	.mobile-navbar {
+		width: 100%;
+		position: absolute;
+		top: -274px;
+		z-index: 999;
+		background-color: white;
+		transition: all 0.55s;
+		border-bottom-style: solid;
+		border-bottom-color: #ff0204;
+		border-bottom-width: 1px; 
+		border-radius: 0px;
+		background-color: #FFFFFF;
+	}
+
+	.mobile-navbar-view {
+		top: 0px;
+	}
+	.menu {
+		background-color: #FFFFFF;
+		height: 274px;
+	}
+
+	.mobile-links {
+		opacity: 0;
+		line-height: 50px;
+		text-align: center;
+		width: 100%;
+		list-style-type: none;
+		padding-left: 0px;
+		max-height: 20%;
+	}
+
+	.mobile-links a {
+		text-decoration: none;
+		color: #7ECEFD;
+
+	}
+	.swipe {
+		height: 45px;
+		text-align: center;
+	}
+
+	.swipe-view {
+		background-color: #FFFFFF;
+	}
+
+	.swipe-view span {
+		color: #ff0204;
+	}
+
+	.swipe span {
+		line-height: 45px;
+	}
+	
+	hr.hairline {
+		margin-top: 0px;
+		margin-bottom: 0px;
+		width: 50%;
+		border-top: #ff0204;
+		border-top-width: 1px;
+		border-top-style: solid;
+	}
+
+  	.logo {
+  		padding-top: 5px;
+  		padding-bottom: 0px;
+  	}
+
+	.tagline {
+		padding-left: 5px;
+	}
+
+	.content {
+		width: 100%;
+		margin:	auto;
+		padding-top: 40px;
+	}
+
+	.col-md-5ths {
+		width: 100%;
+		padding-bottom: 10px;
+		position: relative;
+		min-height: 1px;
+	}
+
+	.details {
+		font-size: 16px;
+		padding-left: 5px;
+		padding-right: 0px;
+	}
+	.intro div p {
+		padding-left: 5px;
+	}
+	#contact {
+		padding-left: 5px;
+	}
+
+	.bloglist {
+		padding-left: 10px;
+		font-size: 18px;
+	}
+	.blogcontent {
+		font-size: 18px;
+		line-height: 1.75;
+	}
+
+	.blogcontent p {
+		padding-left: 10px;
+	}
+
+	.blogcontent p.blogimage {
+		padding-left: 0px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.mobile-navbar {
+		display: none;
+	}
+	.col-md-5ths {
+		padding-left: 10px;
+		float: left;
+		width: 20%;
+		padding-bottom: 10px;
+    	position: relative;
+    	min-height: 1px;
+    }
+	.center {
+		border: none;
+		border-bottom-style: solid;
+		border-bottom-color: #ff0204;
+		border-bottom-width: 1px; 
+		border-radius: 0px;
+		background-color: #FFFFFF;
+		max-height: 75px;
+		width: 57.4%;
+		margin: auto;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: 999;
+		position: fixed;
+		text-align: center;
+		display: inline-block;
+		animation-duration: 1s;
+		animation-name: navbar;
+	}
+
+	.intro div p {
+		padding-left: 0px;
+	}
+
+	.bloglist {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 24px;
+		line-height: 1.75;
+	}
+
+	.blogcontent {
+		font-size: 24px;
+		line-height: 1.75;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.navlink {
+		font-size: 17px;
+	}
+}
+@media screen and (min-width: 1200px) {
+    .col-lg-5ths {
+        width: 20%;
+        float: left;
+        padding: 0px 0px 0px 0px;
+	}
+}

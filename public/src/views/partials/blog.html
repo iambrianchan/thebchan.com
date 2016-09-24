@@ -1,0 +1,17 @@
+<div id="grid">
+	<ng-include src="'src/views/partials/heading.html'"></ng-include>
+	<article class = "content">
+	<div id="title">
+		<h1>Me Blogging About Things</h1>
+	</div>	
+	<div id = "blogs">
+	<div class="bloglist" data-position = "left" ng-repeat = "blog in filteredBlogs">
+		<a ng-href="/blog/{{blog.url}}"><h2>{{blog.title}}</h2></a>
+		<p>{{blog.intro}}</p>
+		<p class = "date">{{blog.date | date: 'longDate'}}</p>
+		<hr>
+	</div>
+	<uib-pagination id="pagination" ng-model="currentPage" total-items="blogs.length" items-per-page="numPerPage" max-size="maxSize" boundary-links="false"></uib-pagination>
+	</div>
+	</article>
+</div>

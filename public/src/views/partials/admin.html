@@ -1,0 +1,26 @@
+<link rel="stylesheet" href= "src/css/feed.css">
+
+<div id="grid">
+	
+	<ng-include
+	src="'src/views/partials/heading.html'">
+	</ng-include>
+
+	<div class= "input-group blog-input">
+		<h2>Create a new blog post</h2>
+		<textarea type= "text" placeholder="Title..." ng-model="formData.title"></textarea><br>
+		<textarea type= "text" placeholder="Introduction..." ng-model="formData.intro"></textarea><br>
+		<textarea type= "text" placeholder="Body..." ng-model="formData.body"></textarea><br>
+		<textarea type= "text" placeholder="List of images separated by lines..." ng-model="formData.images"></textarea><br>
+		<button type= "submit" class="btn" ng-click="createBlog()">Add to the blog!</button>
+	</div>
+
+	<div class="blog-list">
+		<h2>Here are all blog posts:</h2>
+		<div id="blog" ng-repeat = "blog in blogs" ng-trim = "false">
+			<a ng-href="/admin/{{blog.url}}"><h3>{{blog.title}}</h3></a>
+			<p>{{blog.date | date:'longDate'}}</p>
+			<p>{{blog.intro}}</p>
+		</div>
+	</div>
+</div>

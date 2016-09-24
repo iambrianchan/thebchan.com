@@ -1,0 +1,12 @@
+{
+  "name": "web-app",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "animate.css": "latest",
+    "angular-bootstrap": "latest",
+    "angular-google-maps": "latest",
+    "angular-mocks": "~1.4.7"
+  }
+}

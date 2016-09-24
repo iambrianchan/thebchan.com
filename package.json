@@ -1,0 +1,30 @@
+{
+  "name": "web-app",
+  "main": "server.js",
+  "scripts": {
+    "start": "grunt"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "express-session": "^1.11.3",
+    "forever": "^0.15.1",
+    "instagram-node-lib": "^0.1.1",
+    "method-override": "*",
+    "mongoose": "*",
+    "passport": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.0-beta4"
+  },
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "grunt": "*",
+    "grunt-nodemon": "*",
+    "karma": "^0.13.14",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "mocha": "^2.3.3",
+    "phantomjs": "^1.9.18"
+  }
+}

@@ -1,0 +1,35 @@
+<div id = "grid">
+	<ng-include src="'src/views/partials/heading.html'"></ng-include>
+
+	<article class='instagramcontainer'>
+	<div id = "title">
+		<h1>Photos</h1>
+	</div>
+	<div class='tabs'>
+		<div class='tab'><label><input type="radio" ng-model="tab" value="feed">Feed</label></div>
+		<div class='tab'><label><input type="radio" ng-model="tab" value="map">Map</label></div>
+	</div>
+
+	<div ng-switch on="tab">
+
+	<div ng-switch-when="map" ng-controller="MapController" geo-photos>
+		<div class='form-group search' id='search'>
+			<script type="text/ng-template" id="searchbox.tpl.html">
+        	<input class="form-control" type="text" placeholder="Search by city, state, or country">
+    		</script>
+    	</div>
+    	<div class = 'progressbar'></div>
+		<ui-gmap-google-map center='map.center' zoom='map.zoom' options='map.options'>
+			<ui-gmap-markers models="geographies" coords="'location'" click='selectMarker' events='markerevents'></ui-gmap-markers>
+			<ui-gmap-search-box template='searchbox.template' events='searchbox.events' parentdiv="'search'"></ui-gmap-search-box>
+		</ui-gmap-google-map>
+
+    	<div id = 'geophotos'></div>
+    </div>
+
+    <div ng-switch-when="feed" ng-controller="InstagramController" instagram>
+    	<div id = "instagram"></div>
+		<div class='progressbar'></div>
+	</div>
+	</article>
+</div>
