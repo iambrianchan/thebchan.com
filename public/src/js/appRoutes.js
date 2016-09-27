@@ -10,8 +10,8 @@
             templateUrl: 'src/views/partials/resume.html'
         })
 
-        .when('/map', {
-            templateUrl: 'src/views/partials/map.html',
+        .when('/media', {
+            templateUrl: 'src/views/partials/media.html',
             controller: 'MapController'
         })
 
@@ -28,7 +28,10 @@
             templateUrl: 'src/views/partials/blog-detail.html',
             controller: 'BlogController'
         })
-
+        .when('/twitter', {
+            templateUrl: 'src/views/partials/twitter.html',
+            controller: 'TwitterController'
+        })
         .when('/admin/:url', {
             templateUrl: 'src/views/partials/admin-blog-detail.html',
             controller: 'BlogController'

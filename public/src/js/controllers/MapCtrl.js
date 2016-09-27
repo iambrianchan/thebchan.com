@@ -45,7 +45,7 @@ angular.module('MapCtrl', []).controller('MapController', ['$scope', '$http', 'u
 	function check(index, place, type) {
     	if ($.inArray(type, place.types)) {
     		var photo = index
-    		$http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + photo.location.latitude + ',' + photo.location.longitude + '&key=AIzaSyAIEylqOSZmLELjwq34QoYEl1tYRnoC8QM')
+    		$http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + photo.location.latitude + ',' + photo.location.longitude + '&key=AIzaSyCMqpOb5lhkjZ2l4oEkt0UickUMUQmyl0E')
     		.then(function success(response) {
 
     			var j = response.data.results.length;
@@ -78,10 +78,6 @@ angular.module('MapCtrl', []).controller('MapController', ['$scope', '$http', 'u
 
         	var type = place[0].types[0];
         	$scope.geoPhotos = [];
-        	// console.log($scope.geographies);
-        	// for (var i = 0; i < $scope.geographies.length; i++) {
-        	// 	check(i, place, type);
-        	// }
         	$scope.geographies.forEach(function callback(item) {
         		check(item, place, type)
         	});

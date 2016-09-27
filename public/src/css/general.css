@@ -1,3 +1,14 @@
+.table{
+    display:table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin: 100px 0px 20px 0px;
+}
+.table-cell{
+    display:table-cell;
+    vertical-align: middle;
+}
 .content {
 	width: 70%;
 	margin:	auto;

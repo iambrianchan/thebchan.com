@@ -1,5 +1,5 @@
 // public/js/controllers/MainCtrl.js
-angular.module('InstagramCtrl', []).controller('InstagramController', ['$scope', '$http', function($scope, $http) {
+angular.module('InstagramCtrl', []).controller('InstagramController', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
 	$scope.max_id;
 	$scope.more = true;
 	$scope.photos = [];
@@ -7,7 +7,7 @@ angular.module('InstagramCtrl', []).controller('InstagramController', ['$scope',
 	function loadPhotos() {
 			var photos;
 			// var base_url = 'http://localhost:4000/api/feed/14672124/';
-			var base_url = 'https://powerful-scrubland-7724.herokuapp.com/api/feed/14672124/';
+			var base_url = 'https://thebchan.herokuapp.com/api/feed/14672124/';
 			var url = typeof $scope.max_id != 'undefined' ? base_url + '?max_id=' + $scope.max_id : base_url;
 			$http.get(url)
 			.then(function success(response) {
@@ -24,4 +24,13 @@ angular.module('InstagramCtrl', []).controller('InstagramController', ['$scope',
 			})
 	}
 	loadPhotos();
+
+	$scope.$watch("tab", function callback(newVal, oldVal) {
+		console.log(newVal)
+		if (newVal == "twitter") {
+			$timeout(function() {
+				twttr.widgets.load();
+		    })
+		}
+	});
 }]);

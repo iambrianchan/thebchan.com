@@ -3,11 +3,12 @@
 
 	<article class='instagramcontainer'>
 	<div id = "title">
-		<h1>Photos</h1>
+		<h1>Social Media</h1>
 	</div>
 	<div class='tabs'>
-		<div class='tab'><label><input type="radio" ng-model="tab" value="feed">Feed</label></div>
+		<div class='tab'><label><input type="radio" ng-model="tab" value="feed">Instagram</label></div>
 		<div class='tab'><label><input type="radio" ng-model="tab" value="map">Map</label></div>
+		<div class='tab'><label><input type="radio" ng-model="tab" value="twitter">Twitter</label></div>
 	</div>
 
 	<div ng-switch on="tab">
@@ -30,6 +31,15 @@
     <div ng-switch-when="feed" ng-controller="InstagramController" instagram>
     	<div id = "instagram"></div>
 		<div class='progressbar'></div>
+	</div>
+    <div ng-switch-when="twitter" ng-controller="InstagramController">
+		<div class="twitterborder">
+		    <div class="table">
+		        <div class="table-cell">
+					<a class="twitter-timeline" data-width="970" href="https://twitter.com/brianmchan">Tweets by brianmchan</a>
+		        </div>
+		    </div>
+		</div>
 	</div>
 	</article>
 </div>
