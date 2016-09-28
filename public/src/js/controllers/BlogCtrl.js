@@ -63,7 +63,6 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 				for (var i = 0; i < $scope.blogs.length; i++) {
 					if ($scope.blogs[i].url == blogTitle) {
 						$scope.article = $scope.blogs[i];
-						console.log($scope.article);
 					};
 				};
 			}();

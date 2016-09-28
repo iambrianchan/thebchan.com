@@ -26,7 +26,6 @@ angular.module('InstagramCtrl', []).controller('InstagramController', ['$scope',
 	loadPhotos();
 
 	$scope.$watch("tab", function callback(newVal, oldVal) {
-		console.log(newVal)
 		if (newVal == "twitter") {
 			$timeout(function() {
 				twttr.widgets.load();

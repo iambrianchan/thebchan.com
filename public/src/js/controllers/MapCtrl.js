@@ -45,9 +45,8 @@ angular.module('MapCtrl', []).controller('MapController', ['$scope', '$http', 'u
 	function check(index, place, type) {
     	if ($.inArray(type, place.types)) {
     		var photo = index
-    		$http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + photo.location.latitude + ',' + photo.location.longitude + '&key=AIzaSyCMqpOb5lhkjZ2l4oEkt0UickUMUQmyl0E')
+    		$http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + photo.location.latitude + ',' + photo.location.longitude + '&key=AIzaSyDfT_pBfZwAw59bn3BkPrjiKPb_ylmXYUg')
     		.then(function success(response) {
-
     			var j = response.data.results.length;
     			while ($.inArray(type, response.data.results[--j].types) == -1) {
     			};
