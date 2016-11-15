@@ -43,7 +43,8 @@
         })
 
         .when('/login', {
-            templateUrl: 'public/src/views/partials/login.ejs'
+            templateUrl: 'public/src/views/partials/login.html',
+            controller: 'AdminController'
         })
 
     $locationProvider.html5Mode(true);

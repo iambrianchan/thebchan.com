@@ -1,0 +1,12 @@
+#login {
+	margin: 0 auto;
+	width: 20vw;
+	padding-top: 25vh;
+}
+#login input {
+	width: 100%;
+}
+#login button {
+	margin: 0 auto;
+	display: block;
+}

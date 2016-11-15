@@ -29,7 +29,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-nodemon');
-  grunt.loadNpmTasks('grunt-modernizr')
+  grunt.loadNpmTasks('grunt-modernizr');
 
   grunt.registerTask('default', ['modernizr:dist', 'nodemon']); 
 

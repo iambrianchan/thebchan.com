@@ -21,6 +21,7 @@ coverage
 
 # Compiled binary addons
 build/Release
+env.json
 
 # Dependency directory
 node_modules

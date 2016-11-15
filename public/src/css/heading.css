@@ -6,7 +6,7 @@ body {
 
 #grid{
 	position: relative;
-	/*padding-bottom: 20px;*/
+	min-height: 100vh;
 	font-family: 'Lato' sans-serif;
 	width: 82%;
 	background-color: #FFFFFF;

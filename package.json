@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "body-parser": "*",
+    "connect-redis": "^3.1.0",
     "express": "*",
     "express-session": "^1.11.3",
     "instagram-node-lib": "^0.1.1",
@@ -13,7 +14,8 @@
     "mongoose": "*",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
-    "pug": "^2.0.0-beta4"
+    "pug": "^2.0.0-beta4",
+    "redis": "^2.6.3"
   },
   "devDependencies": {
     "chai": "^3.4.0",
