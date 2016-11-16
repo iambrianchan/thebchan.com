@@ -55,9 +55,10 @@ app.get('/api/map', function(req, res) {
 app.set('views', __dirname + '/public/src/views');
 app.set('view engine', 'pug');
 
-app.use(bodyParser.json()); 
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
-app.use(bodyParser.urlencoded({ extended: true })); 
+// app.use(bodyParser.json()); 
+// app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use(methodOverride('X-HTTP-Method-Override')); 
 
