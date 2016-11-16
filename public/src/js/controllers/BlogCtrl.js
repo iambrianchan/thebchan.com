@@ -4,59 +4,10 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 	function sortByDate(a, b) {
 		return new Date(b.date).getTime() - new Date(a.date).getTime();
 	}
-
-	function parseBlogData(blogData) {
-		var arrayOfBlogs = [];
-
-		var blogs = function(blogs) {
-    		function parseImages(images) {
-		      	for (var i = 0; i < images.length; i++) {
-		        	images[i] = "<p><img src=src/img/" + images[i] + "></p>";
-		      	}
-		      	return images;
-		    }
-
-			function parseBlog(blog) {
-				var body, images, counter;
-				body = blog.body.split("\\n\\n");
-				images = parseImages(blog.images);
-				counter = 0;
-
-				for (var i = 0; i < body.length; i++) {
-					if (body[i] == "**image**") {
-						body[i] = images[counter];
-						counter++;
-					}
-					else {
-          				body[i] = "<p>" + body[i] + "</p>";
-					}
-				};
-
-				blog.body = body.join("");
-				return blog;
-			}
-
-			function parseBlogs(blogs) {
-				for (var i = 0; i < blogs.length; i++) {
-					arrayOfBlogs.push(parseBlog(blogs[i]));
-				};
-
-				return arrayOfBlogs;
-			}
-
-			return {
-				getAllBlogs : parseBlogs
-			};
-		}(blogData);
-
-		return blogs.getAllBlogs(blogData);		
-	}
 	
 	Blog.get()
 		.success(function(data) {
-
-			var blogs = parseBlogData(data).sort(sortByDate);
-			$scope.blogs = blogs;
+			$scope.blogs = data.sort(sortByDate);
 
 			var currentBlog = function() {
 				var blogTitle = $location.path().match(/[^\/]+$/)[0];
@@ -83,18 +34,85 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 	});	
 }, 1000);
 
+
 	$scope.createBlog = function() {
-		if ($scope.formData.body != undefined && $scope.formData.title != undefined) {
-			Blog.create($scope.formData)
-				.success(function(data) {
-					$scope.formData = {};
-				});
+
+		if ($scope.newBlogData.content.length > 0 && $scope.newBlogData.title != "title" && $scope.newBlogData.intro != "intro") {
+			Blog.create($scope.newBlogData)
+				.success(function callback(data) {
+					$scope.newBlogData = {
+						title: "title",
+						date: new Date(),
+						content: []
+					};
+				})
 		}
 	}
 
 	$scope.deleteBlog = function() {
 		Blog.delete($scope.article._id)
 			.success(function() {
+		  		return;
 		  	});
+	}
+
+
+	$scope.uploadFile = function(event) {
+		var itemName = this.parentNode.parentNode.id;
+
+		var file = event.target.files[0];
+		r = new FileReader();
+		r.onloadend = function(e) {
+
+			var data = e.target.result;
+			$scope.newBlogData.content[itemName].src = data;
+			$scope.$digest();
+
+		}
+
+		r.readAsDataURL(file);
+	};
+
+	$scope.newBlogData = {
+		title: "title",
+		intro: "intro",
+		date: new Date(),
+		content: []
+	};
+
+	$scope.add = function(type) {
+
+		if (type == "text") {
+
+			var newTextItem = {
+				index: $scope.newBlogData.content.length,
+				type: "text",
+				text: ""
+			}
+
+			$scope.newBlogData.content.push(newTextItem);
+		}
+
+		else if (type == "image") {
+
+			var newImageItem = {
+				index: $scope.newBlogData.content.length,
+				type: "image",
+				src: ""
+			}
+
+			$scope.newBlogData.content.push(newImageItem);
+		}
+		return;
+	}
+	$scope.remove = function(index) {
+
+		for (let i = 0; i < $scope.newBlogData.content.length; i++) {
+			if ($scope.newBlogData.content[i].index == index) {
+				$scope.newBlogData.content.splice(i, 1);
+			}
+		}
+
+		return;
 	}
 }]);

@@ -2,25 +2,40 @@
 
 <div id="grid">
 	
-	<ng-include
-	src="'public/src/views/partials/heading.html'">
-	</ng-include>
+	<ng-include src="'public/src/views/partials/heading.html'"></ng-include>
 
-	<div class= "input-group blog-input">
-		<h2>Create a new blog post</h2>
-		<textarea type= "text" placeholder="Title..." ng-model="formData.title"></textarea><br>
-		<textarea type= "text" placeholder="Introduction..." ng-model="formData.intro"></textarea><br>
-		<textarea type= "text" placeholder="Body..." ng-model="formData.body"></textarea><br>
-		<textarea type= "text" placeholder="List of images separated by lines..." ng-model="formData.images"></textarea><br>
-		<button type= "submit" class="btn" ng-click="createBlog()">Add to the blog!</button>
-	</div>
+	<div class="row">
 
-	<div class="blog-list">
-		<h2>Here are all blog posts:</h2>
-		<div id="blog" ng-repeat = "blog in blogs" ng-trim = "false">
-			<a ng-href="/admin/{{blog.url}}"><h3>{{blog.title}}</h3></a>
-			<p>{{blog.date | date:'longDate'}}</p>
-			<p>{{blog.intro}}</p>
+		<div id="cms" class="col-lg-6">
+			<div id="content-buttons">
+				<button ng-click="add('text')">add new text section</button>
+				<button ng-click="add('image')">add new photo section</button>
+			</div>
+			<div>
+				<textarea ng-model="newBlogData.title"></textarea>
+				<textarea ng-model="newBlogData.intro"></textarea>
+				<div ng-repeat="item in newBlogData.content" id="{{item.index}}">
+					<textarea ng-if="item.type=='text'" ng-model="item.text" dynamic-text-area></textarea>
+					<div ng-if="item.type=='image'" class="image-upload-wrapper">
+						<input type="file" custom-on-change="uploadFile">
+					</div>
+					<button ng-click="remove(item.index)"><span class="glyphicon glyphicon-trash"></span></button>
+				</div>	
+			</div>
 		</div>
+	
+		<div id="blog-preview" class="col-lg-6">
+			<h1>{{newBlogData.title}}</h1>
+			<p class="date">{{newBlogData.date | date: 'longDate'}}</p>
+			<div ng-repeat="item in newBlogData.content">
+				<p ng-if="item.type=='text'">{{item.text}}</p>
+				<p ng-if="item.type=='image'">
+					<img ng-src="{{item.src}}"/>
+				</p>
+			</div>
+			<button ng-click="createBlog()" class="add-blog-button"><span class="glyphicon glyphicon-ok"></span></button>
+		</div>
+
 	</div>
+
 </div>

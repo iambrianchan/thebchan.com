@@ -4,7 +4,10 @@
 <div class="blog blogcontent notViewed">
 	<h1 id = "title" class = "blogtitle">{{article.title}}</h1>
 	<p class="date">{{article.date | date: 'longDate'}}</p>
-	<div ng-bind-html="article.body"></div>
+	<div ng-repeat="item in article.content">
+		<p ng-if="item.type == 'text'" ng-bind-html="item.text"></p>
+		<p ng-if="item.type == 'image'"><img src="{{item.src}}"></p>
+	</div>
 </div>
 </article>
 </div>

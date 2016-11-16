@@ -21,37 +21,6 @@ var options = {
 };
 var client = redis.createClient(options);
 
-function parseBlogPostInput(input) {
-
-  var post = function() {
-
-    function parseImageInput(blog) {
-      var images = blog.images.split("\n");
-
-      return images;
-    }
-
-    function createURL(blog) {
-      var url = blog.title.split(" ").join("-");
-
-      return url;
-    }
-
-    function readyBlogPost(blog) {
-      blog.images = parseImageInput(blog);
-      blog.url = createURL(blog);
-
-      return blog;
-    }
-    
-    return {
-      readyBlogPost : readyBlogPost
-    }
-  }();
-
-  return post.readyBlogPost(input);
-}
-
 // Passport session setup
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -131,15 +100,14 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/blogs', function(req, res) {
-    var blogpost = parseBlogPostInput(req.body);
+    var blogpost = req.body;
 
 		Blog.create({
 			title: blogpost.title,
       intro: blogpost.intro,
-			body: blogpost.body,
-      images: blogpost.images,
-      url: blogpost.url,
-			date: new Date()
+      content: blogpost.content,
+      url: blogpost.title.split(' ').join('-'),
+      date: blogpost.date
 		}, function(err, blog) {
 			if(err)
 				res.send(err);

@@ -1,3 +1,5 @@
+
+/* CSS for the login page */
 #login {
 	margin: 0 auto;
 	width: 20vw;
@@ -9,4 +11,68 @@
 #login button {
 	margin: 0 auto;
 	display: block;
+}
+
+/* CSS for the admin page */
+div#cms {
+	padding-top: 100px;
+}
+div#cms div#content-buttons {
+	width: 100%;
+	text-align: center;
+}
+
+div #cms textarea {
+	display: inline-block;
+	vertical-align: middle;
+	max-width:600px;
+	min-height: 200px;
+	color:#999;
+	width:100%;
+	background:#fff;
+	border-radius:3px;
+	line-height: 1.5em;
+	border:none;
+	box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
+	padding:30px;
+	-webkit-transition: height 1s ease;
+	-moz-transition: height 1s ease;
+	-ms-transition: height 1s ease;
+	-o-transition: height 1s ease;
+	transition: height 1s ease;
+}
+
+div.image-upload-wrapper {
+	display: inline-block;
+	vertical-align: middle;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background-image: url("../img/uploadSquare.png");
+    background-size: cover;
+    background-color: #F2F2F2;
+    width: 100px;
+    height: 100px;
+}
+div.image-upload-wrapper input {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* Blog */
+div #blog-preview {
+	display: inline-block;
+	word-break: break-word;
+	padding-top: 100px;
+}
+
+div #blog-preview img {
+	width: 100%;
+}
+div #blog-preview button.add-blog-button {
+	display: block;
+	margin: 0 auto;
 }
