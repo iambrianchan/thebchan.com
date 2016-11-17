@@ -4,7 +4,12 @@
 	
 	<ng-include src="'public/src/views/partials/heading.html'"></ng-include>
 
-	<div class="row">
+	<div class="admin-view-options">
+		<button ng-click="changeView('create')" class="create-view-button">Blog Create</button>
+		<button ng-click="changeView('edit')" class="edit-view-button">Blog Edit</button>
+	</div>
+
+	<div class="row admin-view" ng-if="view == 'create'">
 
 		<div id="cms" class="col-lg-6">
 			<div id="content-buttons">
@@ -36,6 +41,28 @@
 			<button ng-click="createBlog()" class="add-blog-button"><span class="glyphicon glyphicon-ok"></span></button>
 		</div>
 
+	</div>
+
+	<div ng-if="view == 'edit'" class="row admin-view">
+		<div class="col-lg-6">
+			<div ng-repeat="item in blogs" class="bloglist">
+				<h2 ng-click="selectBlog(item)">{{item.title}}</h2>
+				<p>{{item.intro}}</p>
+				<p class = "date">{{item.date | date: 'longDate'}}</p>
+			</div>
+		</div>
+
+			<div id="blog-preview" class="col-lg-6">
+				<h1>{{selected.title}}</h1>
+				<p class="date">{{selected.date | date: 'longDate'}}</p>
+				<div ng-repeat="item in selected.content">
+					<p ng-if="item.type=='text'">{{item.text}}</p>
+					<p ng-if="item.type=='image'">
+						<img ng-src="{{item.src}}"/>
+					</p>
+				</div>
+				<button ng-click="deleteBlog()" class="delete-blog-button"><span class="glyphicon glyphicon-trash"></span></button>
+			</div>
 	</div>
 
 </div>

@@ -1,43 +1,67 @@
 // Controller for Blog page.
 angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', '$location', 'Blog', function($scope, $http, $location, Blog) {
-	
-	function sortByDate(a, b) {
-		return new Date(b.date).getTime() - new Date(a.date).getTime();
-	}
-	
-	Blog.get()
-		.success(function(data) {
-			$scope.blogs = data.sort(sortByDate);
-
-			var currentBlog = function() {
-				var blogTitle = $location.path().match(/[^\/]+$/)[0];
-				for (var i = 0; i < $scope.blogs.length; i++) {
-					if ($scope.blogs[i].url == blogTitle) {
-						$scope.article = $scope.blogs[i];
-					};
-				};
-			}();
-
-			$scope.filteredBlogs = $scope.blogs.slice(0,4);
-		});
 
 	$scope.currentPage = 1;
 	$scope.numPerPage = 4;
 	$scope.maxSize = 5;
+	$scope.view = "create";
+	$scope.selected = {};
 
-	setTimeout(function() {
-	$scope.$watch("currentPage + numPerPage", function() {
-	  	var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-	  	, end = begin + $scope.numPerPage;
+	// sort blog posts by creation date	
+	function sortByDate(a, b) {
+		return new Date(b.date).getTime() - new Date(a.date).getTime();
+	}
+	
+	// get all blog posts
+	function getBlogs() {
+		Blog.get()
+			.success(function(data) {
+				$scope.blogs = data.sort(sortByDate);
+				console.log($scope.blogs)
+				var currentBlog = function() {
+					var blogTitle = $location.path().match(/[^\/]+$/)[0];
+					for (var i = 0; i < $scope.blogs.length; i++) {
+						if ($scope.blogs[i].url == blogTitle) {
+							$scope.article = $scope.blogs[i];
+						};
+					};
+				}();
+				$scope.selected = {};
+				$scope.filteredBlogs = $scope.blogs;
+				// $scope.filteredBlogs = $scope.blogs.slice(0,4);
+			});
+	}
 
-	  	$scope.filteredBlogs = $scope.blogs.slice(begin, end);
-	});	
-}, 1000);
+	getBlogs();
 
+// do not use until angular ui is working
+// 	setTimeout(function() {
+// 	$scope.$watch("currentPage + numPerPage", function() {
+// 	  	var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+// 	  	, end = begin + $scope.numPerPage;
+
+// 	  	$scope.filteredBlogs = $scope.blogs.slice(begin, end);
+// 	});	
+// }, 1000);
+
+	// change the view
+	$scope.changeView = function(type) {
+
+		$scope.view = type;
+
+		return;
+	}
+
+	$scope.selectBlog = function(blog) {
+
+		return $scope.selected = blog;
+
+	}
 
 	$scope.createBlog = function() {
 
 		if ($scope.newBlogData.content.length > 0 && $scope.newBlogData.title != "title" && $scope.newBlogData.intro != "intro") {
+
 			Blog.create($scope.newBlogData)
 				.success(function callback(data) {
 					$scope.newBlogData = {
@@ -45,15 +69,26 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 						date: new Date(),
 						content: []
 					};
+
+					return 	getBlogs();
 				})
 		}
 	}
 
 	$scope.deleteBlog = function() {
-		Blog.delete($scope.article._id)
-			.success(function() {
-		  		return;
-		  	});
+
+		Blog.delete($scope.selected._id)
+			.then(function onSuccess() {
+
+				getBlogs();
+
+				return window.alert("Successfully removed blog post.");
+
+			}, function onError(error) {
+
+				return window.alert("An error occurred while removing blog post.");
+
+			})
 	}
 
 
@@ -74,10 +109,12 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 	};
 
 	$scope.newBlogData = {
+
 		title: "title",
 		intro: "intro",
 		date: new Date(),
 		content: []
+		
 	};
 
 	$scope.add = function(type) {

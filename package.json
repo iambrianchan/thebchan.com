@@ -1,5 +1,7 @@
 {
   "name": "web-app",
+  "version": "1.0.0",
+  "description": "Portfolio site for Brian Chan",
   "main": "server.js",
   "scripts": {
     "start": "grunt"

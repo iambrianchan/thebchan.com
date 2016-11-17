@@ -14,9 +14,27 @@
 }
 
 /* CSS for the admin page */
-div#cms {
+div.admin-view-options {
+	padding-top: 100px;
+	text-align: center;
+}
+div.admin-view-options > button {
+	font-weight: 700;
+	box-shadow: 1px 1px 0px black;
+	border-radius: 16px;
+}
+div.admin-view-options > button.create-view-button {
+	background-color: green;
+}
+
+div.admin-view-options > button.edit-view-button {
+	background-color: yellow;
+}
+div.admin-view {
 	padding-top: 100px;
 }
+
+/* CSS for Blog Creation */
 div#cms div#content-buttons {
 	width: 100%;
 	text-align: center;
@@ -62,17 +80,29 @@ div.image-upload-wrapper input {
 	cursor: pointer;
 }
 
-/* Blog */
+/* CSS for Blog Edits */
+div.bloglist h2:hover {
+	color: #FF7F66;
+	cursor: pointer;
+}
+
+
+/* Blog Preview */
 div #blog-preview {
 	display: inline-block;
 	word-break: break-word;
-	padding-top: 100px;
 }
 
 div #blog-preview img {
 	width: 100%;
 }
 div #blog-preview button.add-blog-button {
+	background-color: green;
+	display: block;
+	margin: 0 auto;
+}
+div #blog-preview button.delete-blog-button {
+	background-color: red;
 	display: block;
 	margin: 0 auto;
 }

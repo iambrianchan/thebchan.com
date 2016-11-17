@@ -9,7 +9,6 @@ angular.module('BlogService', []).factory('Blog', ['$http', function($http) {
 		},
 
 		delete : function(id) {
-			console.log(id);
 			return $http.delete('/api/blogs/' + id);
 		}
 	}

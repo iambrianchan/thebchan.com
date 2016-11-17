@@ -19,6 +19,7 @@ var options = {
   port: config.REDIS_PORT,
   password: config.REDIS_PASS
 };
+
 var client = redis.createClient(options);
 
 // Passport session setup
@@ -36,12 +37,16 @@ passport.use(new LocalStrategy(
   function(username, password, done) {
 
     Users.findOne({
+
       username: username,
       password: password
+
     }, function callback(error, user) {
+
       if (error) {
         return done(error);
       }
+      
       if (!user) {
         return done(null, false, { message: "Incorrect username." });
       }
@@ -103,36 +108,54 @@ module.exports = function(app) {
     var blogpost = req.body;
 
 		Blog.create({
+
 			title: blogpost.title,
       intro: blogpost.intro,
       content: blogpost.content,
       url: blogpost.title.split(' ').join('-'),
       date: blogpost.date
+
 		}, function(err, blog) {
+
 			if(err)
 				res.send(err);
+
 			res.json(blog);
+
 		});
+
 	});
 
 	app.delete('/api/blogs/:blog_id', ensureAuthenticated, function(req, res) {
+
 		Blog.remove({
+
 			_id : req.params.blog_id
+
 		}, function(err, blog) {
-			if(err)
+
+			if(err) {
+
 				res.send(err);
-      else {
       }
+
+      else {
+
+        res.send(200);
+      }
+
 		});
 	});
 
-	app.post('/login', passport.authenticate('local'),
-	function(req, res) {
+	app.post('/login', passport.authenticate('local'), function(req, res) {
+
 		res.redirect('/admin');
+
 	});
 
   // serve up index.pug
   app.get('*', function(req, res) {
+
       res.render('index');
   });
 }
