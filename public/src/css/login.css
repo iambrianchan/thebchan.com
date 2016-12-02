@@ -38,6 +38,7 @@ div.admin-view {
 div#cms div#content-buttons {
 	width: 100%;
 	text-align: center;
+	padding: 20px 0px 20px 0px;
 }
 
 div #cms textarea {
@@ -99,10 +100,8 @@ div #blog-preview img {
 div #blog-preview button.add-blog-button {
 	background-color: green;
 	display: block;
-	margin: 0 auto;
 }
 div #blog-preview button.delete-blog-button {
 	background-color: red;
 	display: block;
-	margin: 0 auto;
 }

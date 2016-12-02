@@ -12,10 +12,6 @@
 	<div class="row admin-view" ng-if="view == 'create'">
 
 		<div id="cms" class="col-lg-6">
-			<div id="content-buttons">
-				<button ng-click="add('text')">add new text section</button>
-				<button ng-click="add('image')">add new photo section</button>
-			</div>
 			<div>
 				<textarea ng-model="newBlogData.title"></textarea>
 				<textarea ng-model="newBlogData.intro"></textarea>
@@ -25,6 +21,10 @@
 						<input type="file" custom-on-change="uploadFile">
 					</div>
 					<button ng-click="remove(item.index)"><span class="glyphicon glyphicon-trash"></span></button>
+				</div>
+				<div id="content-buttons">
+					<button ng-click="add('text')">add new text section</button>
+					<button ng-click="add('image')">add new photo section</button>
 				</div>	
 			</div>
 		</div>
@@ -56,7 +56,7 @@
 				<h1>{{selected.title}}</h1>
 				<p class="date">{{selected.date | date: 'longDate'}}</p>
 				<div ng-repeat="item in selected.content">
-					<p ng-if="item.type=='text'">{{item.text}}</p>
+					<p ng-if="item.type=='text'" ng-bind-html="item.text"></p>
 					<p ng-if="item.type=='image'">
 						<img ng-src="{{item.src}}"/>
 					</p>

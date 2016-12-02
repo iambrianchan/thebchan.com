@@ -17,7 +17,6 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 		Blog.get()
 			.success(function(data) {
 				$scope.blogs = data.sort(sortByDate);
-				console.log($scope.blogs)
 				var currentBlog = function() {
 					var blogTitle = $location.path().match(/[^\/]+$/)[0];
 					for (var i = 0; i < $scope.blogs.length; i++) {
@@ -114,7 +113,7 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 		intro: "intro",
 		date: new Date(),
 		content: []
-		
+
 	};
 
 	$scope.add = function(type) {

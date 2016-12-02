@@ -1,6 +1,6 @@
 {
-  "name": "web-app",
-  "version": "1.0.0",
+  "name": "thebchan.com Portfolio",
+  "version": "1.0.1",
   "description": "Portfolio site for Brian Chan",
   "main": "server.js",
   "scripts": {
