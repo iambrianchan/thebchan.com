@@ -1,5 +1,5 @@
 // Controller for Blog page.
-angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', '$location', 'Blog', function($scope, $http, $location, Blog) {
+angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', '$location', '$sce', 'Blog', function($scope, $http, $location, $sce, Blog) {
 
 	$scope.currentPage = 1;
 	$scope.numPerPage = 4;
@@ -151,4 +151,8 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 
 		return;
 	}
+
+  	$scope.trustSrc = function(src) {
+    	return $sce.trustAsResourceUrl(src);
+  	}
 }]);

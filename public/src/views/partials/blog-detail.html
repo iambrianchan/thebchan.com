@@ -5,7 +5,8 @@
 	<h1 id = "title" class = "blogtitle">{{article.title}}</h1>
 	<p class="date">{{article.date | date: 'longDate'}}</p>
 	<div ng-repeat="item in article.content">
-		<p ng-if="item.type == 'text'" ng-bind-html="item.text"></p>
+		<p ng-if="item.type == 'text'" ng-bind-html="item.text">{{item.text}}</p>
+		<iframe ng-if="item.type == 'iframe'" width="560" height="315" ng-src="{{trustSrc(item.src)}}"></iframe>
 		<p ng-if="item.type == 'image'"><img src="{{item.src}}"></p>
 	</div>
 </div>
