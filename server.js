@@ -20,7 +20,7 @@ Instagram.set('client_secret', 'b4c402017a03419ba841274d43472c7d');
 Instagram.set('access_token', '14672124.be9a87d.7a7916688466452dbd9e5b97e354ac87');
 
 var port = process.env.PORT || 4000; 
-mongoose.connect(config.production.db);
+mongoose.connect(config.development.db);
 
 app.get('/api/feed/:userid', function(req, res) {
 	res.header("Access-Control-Allow-Origin", "*");

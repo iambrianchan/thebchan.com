@@ -139,6 +139,18 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 
 			$scope.newBlogData.content.push(newImageItem);
 		}
+
+		else if (type == "iframe") {
+
+			var newIframeItem = {
+				index: $scope.newBlogData.content.length,
+				type: "iframe",
+				src: ""
+			}
+
+			$scope.newBlogData.content.push(newIframeItem);
+		}
+
 		return;
 	}
 	$scope.remove = function(index) {

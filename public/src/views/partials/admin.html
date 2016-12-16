@@ -17,6 +17,7 @@
 				<textarea ng-model="newBlogData.intro"></textarea>
 				<div ng-repeat="item in newBlogData.content" id="{{item.index}}">
 					<textarea ng-if="item.type=='text'" ng-model="item.text" dynamic-text-area></textarea>
+					<textarea ng-if="item.type=='iframe'" ng-model="item.src" dynamic-text-area></textarea>
 					<div ng-if="item.type=='image'" class="image-upload-wrapper">
 						<input type="file" custom-on-change="uploadFile">
 					</div>
@@ -25,6 +26,7 @@
 				<div id="content-buttons">
 					<button ng-click="add('text')">add new text section</button>
 					<button ng-click="add('image')">add new photo section</button>
+					<button ng-click="add('iframe')">add new iframe section</button>
 				</div>	
 			</div>
 		</div>
@@ -59,6 +61,9 @@
 					<p ng-if="item.type=='text'" ng-bind-html="item.text"></p>
 					<p ng-if="item.type=='image'">
 						<img ng-src="{{item.src}}"/>
+					</p>
+					<p ng-if="item.type=='iframe'">
+						<iframe width="560" height="315" ng-src="{{trustSrc(item.src)}}"></iframe>
 					</p>
 				</div>
 				<button ng-click="deleteBlog()" class="delete-blog-button"><span class="glyphicon glyphicon-trash"></span></button>
