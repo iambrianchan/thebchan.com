@@ -2,6 +2,7 @@
     angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
     $routeProvider
+    
         .when('/', {
             templateUrl: 'public/src/views/partials/home.html'
         })
@@ -28,10 +29,7 @@
             templateUrl: 'public/src/views/partials/blog-detail.html',
             controller: 'BlogController'
         })
-        .when('/twitter', {
-            templateUrl: 'public/src/views/partials/twitter.html',
-            controller: 'TwitterController'
-        })
+
         .when('/admin/:url', {
             templateUrl: 'public/src/views/partials/admin-blog-detail.html',
             controller: 'BlogController'

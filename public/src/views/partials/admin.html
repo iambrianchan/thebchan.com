@@ -35,9 +35,12 @@
 			<h1>{{newBlogData.title}}</h1>
 			<p class="date">{{newBlogData.date | date: 'longDate'}}</p>
 			<div ng-repeat="item in newBlogData.content">
-				<p ng-if="item.type=='text'">{{item.text}}</p>
+				<p ng-if="item.type=='text'" ng-bind-html="item.text">{{item.text}}</p>
 				<p ng-if="item.type=='image'">
 					<img ng-src="{{item.src}}"/>
+				</p>
+				<p ng-if="item.type=='iframe'">
+					<iframe width="560" height="315" ng-src="{{trustSrc(item.src)}}"></iframe>
 				</p>
 			</div>
 			<button ng-click="createBlog()" class="add-blog-button"><span class="glyphicon glyphicon-ok"></span></button>
@@ -58,7 +61,7 @@
 				<h1>{{selected.title}}</h1>
 				<p class="date">{{selected.date | date: 'longDate'}}</p>
 				<div ng-repeat="item in selected.content">
-					<p ng-if="item.type=='text'" ng-bind-html="item.text"></p>
+					<p ng-if="item.type=='text'" ng-bind-html="item.text">{{item.text}}</p>
 					<p ng-if="item.type=='image'">
 						<img ng-src="{{item.src}}"/>
 					</p>

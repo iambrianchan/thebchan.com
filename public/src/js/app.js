@@ -9,4 +9,5 @@ angular.module('myApp', ['ngRoute', 'appRoutes', 'ngSanitize', 'ui.bootstrap', '
 .config(['AnalyticsProvider', function (AnalyticsProvider) {
 
    AnalyticsProvider.setAccount('UA-89957529-1');
+   
 }]).run(['Analytics', function(Analytics) { }]);
