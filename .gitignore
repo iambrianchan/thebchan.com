@@ -27,6 +27,7 @@ env.json
 node_modules
 public/libs
 bin
+dist
 
 # Optional npm cache directory
 .npm

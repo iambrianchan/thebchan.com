@@ -152,19 +152,19 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 		}
 
 		return;
-	}
+	};
 	$scope.remove = function(index) {
 
-		for (let i = 0; i < $scope.newBlogData.content.length; i++) {
+		for (var i = 0; i < $scope.newBlogData.content.length; i++) {
 			if ($scope.newBlogData.content[i].index == index) {
 				$scope.newBlogData.content.splice(i, 1);
 			}
 		}
 
 		return;
-	}
+	};
 
   	$scope.trustSrc = function(src) {
     	return $sce.trustAsResourceUrl(src);
-  	}
+  	};
 }]);

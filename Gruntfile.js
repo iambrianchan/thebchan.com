@@ -24,13 +24,37 @@ module.exports = function(grunt) {
         ],
         "uglify": true
       }
+    },
+
+    // uglify
+    uglify: {
+      my_target: {
+        options: {
+          beautify: true
+        },
+        files: [{
+          src: '*/**.js',
+          dest: 'dist/js',
+          cwd: 'public/src/js',
+          expand: true,
+          ext: '.min.js',
+        },
+        {
+          src: '*.js',
+          dest: 'dist/js',
+          cwd: 'public/src/js',
+          expand: true,
+          ext: '.min.js'
+        }]
+      }
     }
 
   });
 
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-modernizr');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('default', ['modernizr:dist', 'nodemon']); 
+  grunt.registerTask('default', ['uglify', 'modernizr:dist', 'nodemon']); 
 
 };

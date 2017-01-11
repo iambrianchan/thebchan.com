@@ -1,7 +1,7 @@
 angular.module('MainDir', [])
 
 // binds clicks on document
-.directive('shapes', function($document) {
+.directive('shapes', function() {
 	return {
 		restrict: 'A',
 		link: function(scope, element, attributes) {
@@ -298,15 +298,15 @@ angular.module('MainDir', [])
 				var container = angular.element("<div></div>");
 				container.addClass("row-fluid");
 
-				for (let i = 0; i < photos.length; i++) {
-					let newPhoto = photos[i];
-					let newPhotoElement = angular.element("<div></div>");
-					let newPhotoElementATag = angular.element("<a></a>");
+				for (var i = 0; i < photos.length; i++) {
+					var newPhoto = photos[i];
+					var newPhotoElement = angular.element("<div></div>");
+					var newPhotoElementATag = angular.element("<a></a>");
 			        newPhotoImage = angular.element("<img>");
 
-					let caption = newPhoto.caption != null ? newPhoto.caption.text : ""
-					let link = $(window).width() > 480 ? newPhoto.images.standard_resolution.url : newPhoto.images.low_resolution.url;
-					let newPhotoClass = $(window).width() > 767 ? "instagram-image" : "instagram-medium"
+					var caption = newPhoto.caption != null ? newPhoto.caption.text : ""
+					var link = $(window).width() > 480 ? newPhoto.images.standard_resolution.url : newPhoto.images.low_resolution.url;
+					var newPhotoClass = $(window).width() > 767 ? "instagram-image" : "instagram-medium"
 
 			        newPhotoImage
 			        	.addClass(newPhotoClass)

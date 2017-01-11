@@ -1,5 +1,5 @@
 {
-  "name": "thebchan.com Portfolio",
+  "name": "thebchan",
   "version": "1.0.1",
   "description": "Portfolio site for Brian Chan",
   "main": "server.js",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "chai": "^3.4.0",
     "grunt": "*",
+    "grunt-contrib-uglify": "^2.0.0",
     "grunt-modernizr": "^1.0.2",
     "grunt-nodemon": "*",
     "karma": "^0.13.14",
@@ -29,6 +30,7 @@
     "karma-mocha": "^0.2.0",
     "karma-phantomjs-launcher": "^0.2.1",
     "mocha": "^2.3.3",
-    "phantomjs": "^1.9.18"
+    "phantomjs": "^1.9.18",
+    "uglify": "^0.1.5"
   }
 }
