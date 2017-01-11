@@ -26,36 +26,62 @@ module.exports = function(grunt) {
       }
     },
 
+    // annotate angular files
+    ngAnnotate: {
+      options: {
+        singleQuotes: true
+      },
+      app: {
+        files: [{
+          expand: true,
+          src: 'public/src/js/*.js',
+          dest: 'dist'
+        },
+        {
+          expand: true,
+          src: 'public/src/js/*/**.js',
+          dest: 'dist'
+        }]
+      }
+    },
+
     // uglify
     uglify: {
       my_target: {
         options: {
-          mangle: false,
           beautify: true
         },
         files: [{
           src: '*/**.js',
           dest: 'dist/js',
-          cwd: 'public/src/js',
+          cwd: 'dist/public/src/js',
           expand: true,
           ext: '.min.js',
         },
         {
           src: '*.js',
           dest: 'dist/js',
-          cwd: 'public/src/js',
+          cwd: 'dist/public/src/js',
           expand: true,
           ext: '.min.js'
         }]
       }
-    }
+    },
 
+    // remove annotated angular files
+    clean: {
+      files: {
+        src: ['dist/public']
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-modernizr');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-ng-annotate');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
-  grunt.registerTask('default', ['uglify', 'modernizr:dist', 'nodemon']); 
+  grunt.registerTask('default', ['ngAnnotate', 'uglify', 'modernizr:dist', 'clean', 'nodemon']); 
 
 };
