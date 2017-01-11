@@ -30,6 +30,7 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         options: {
+          mangle: false,
           beautify: true
         },
         files: [{
