@@ -1,6 +1,7 @@
 // server.js
 
 var express        = require('express');
+var compression    = require('compression');
 var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
@@ -55,6 +56,7 @@ app.get('/api/map', function(req, res) {
 app.set('views', __dirname + '/public/src/views');
 app.set('view engine', 'pug');
 
+app.use(compression());
 // app.use(bodyParser.json()); 
 // app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
 app.use(bodyParser.json({limit: '50mb'}));

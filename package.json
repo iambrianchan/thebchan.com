@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "chai": "^3.4.0",
+    "compression": "^1.6.2",
     "grunt": "*",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-uglify": "^2.0.0",
