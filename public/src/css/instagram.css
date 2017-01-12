@@ -2,7 +2,6 @@
 
 .angular-google-map-container { 
 	height: 400px; 
-	/*margin-top: 25px;*/
 }
 
 #geophotos {
@@ -13,7 +12,6 @@
 	margin: auto;
 	width: 100%;
 	padding-top: 25px;
-	/*padding-bottom: 25px;*/
 }
 
 .tabs {
@@ -24,7 +22,6 @@
 }
 .tab {
 	display: inline-block;
-  /*float: left;*/
 }
 .tab label {
   background: #eee; 
@@ -96,4 +93,19 @@
 
 .instagramcontainer {
 	padding-top: 40px;
+}
+
+@media only screen and (max-width: 480px) {
+	.instagramcontainer {
+		width: 100%;
+	}
+	.col-xs-5ths {
+		width: 100%;
+		padding-bottom: 10px;
+	}
+
+	.instagram-image {
+		width: 70%;
+	}
+
 }

@@ -1,14 +1,17 @@
 .intro {
-	font-size: 24px;
+	font-size: 30px;
 }
 
+#selfportrait {
+	text-align: center;
+}
 .intro img {
-	width: 100%;
+	width: 75%;
 	padding-bottom: 20px;
 }
 
 .details {
-	font-size: 16px;
+	font-size: 24px;
 }
 
 #contact {
@@ -32,9 +35,10 @@
 }
 
 #contact {
+	font-size: 20px;
 	padding-top: 40px;
 	clear: both;
-	padding-bottom: 20px;
+	padding-bottom: 40px;
 }
 
 #contact ul {
@@ -52,4 +56,28 @@
 }
 .logos {
 	width: 29px;
+}
+
+@media screen and (max-width: 480px) {
+	article.content p.tagline {
+		font-size: 24px;
+	}
+	article.content p {
+		padding-left: 10px;
+		font-size: 20px;
+		padding-right: 10px;
+	}
+	article.content h1, h2 {
+		text-align: center;
+	}
+	article.content #contact ul {
+		text-align: center;
+	}
+	article.content #contact ul li {
+		display: inline-block;
+		float: none;
+	}
+	article.content #contact p {
+		font-size: 16px;
+	}
 }

@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
-    // configure nodemon
+    // nodemon
     nodemon: {
       dev: {
         script: 'server.js'
@@ -68,6 +68,19 @@ module.exports = function(grunt) {
       }
     },
 
+    // cssmin
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'public/src/css',
+          src: ['*.css'],
+          dest: 'dist/css',
+          ext: '.min.css'
+        }]
+      }
+    },
+
     // remove annotated angular files
     clean: {
       files: {
@@ -80,8 +93,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-modernizr');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-ng-annotate');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-  grunt.registerTask('default', ['ngAnnotate', 'uglify', 'modernizr:dist', 'clean', 'nodemon']); 
+  grunt.registerTask('default', ['ngAnnotate', 'uglify', 'modernizr:dist', 'cssmin','clean', 'nodemon']); 
 
 };

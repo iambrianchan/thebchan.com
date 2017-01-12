@@ -7,8 +7,8 @@ body {
 #grid{
 	position: relative;
 	min-height: 100vh;
-	font-family: 'Lato' sans-serif;
-	width: 82%;
+	font-family: 'Roboto' sans-serif;
+	width: 90%;
 	background-color: #FFFFFF;
 	margin: 0 auto;
 }
@@ -23,12 +23,12 @@ body {
 
 .navlink {
 	font-size: 20px;
-	font-family: 'Lato' sans-serif;
+	font-family: 'Roboto' sans-serif;
 	position: relative;
 	top: -30px;
 	opacity: 0;
 	display: inline-block;
-	width: 19%;
+	width: 13%;
 	pointer-events: none;
 	cursor: default;
 }
@@ -60,14 +60,14 @@ body {
 @keyframes navbar {
 	from{width:0%;
 		display: none;}
-	to{width: 57.4%;
+	to{width: 90%;
 		display: inline-block;}
 }
 
 @keyframes navbarsmall {
 	from {width: 0%;
 		display: none;}
-	to{width: 90%;
+	to{width: 100%;
 		display: inline-block;
 	}
 }
@@ -112,7 +112,7 @@ body {
 	.mobile-navbar {
 		width: 100%;
 		position: absolute;
-		top: -274px;
+		top: -380px;
 		z-index: 999;
 		background-color: white;
 		transition: all 0.55s;
@@ -128,7 +128,7 @@ body {
 	}
 	.menu {
 		background-color: #FFFFFF;
-		height: 274px;
+		height: 380px;
 	}
 
 	.mobile-links {
@@ -138,7 +138,7 @@ body {
 		width: 100%;
 		list-style-type: none;
 		padding-left: 0px;
-		max-height: 20%;
+		max-height: 13%;
 	}
 
 	.mobile-links a {
@@ -244,7 +244,7 @@ body {
 		border-radius: 0px;
 		background-color: #FFFFFF;
 		max-height: 75px;
-		width: 57.4%;
+		width: 90%;
 		margin: auto;
 		top: 0;
 		right: 0;
@@ -284,5 +284,18 @@ body {
         width: 20%;
         float: left;
         padding: 0px 0px 0px 0px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#grid {
+		width: 100%;
+		min-height: 100vh;
+	}
+	.navbar {
+		width: 100%;
+	}
+	div.mobile-navbar {
+		font-size: 24px;
 	}
 }
