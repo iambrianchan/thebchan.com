@@ -6,21 +6,20 @@ angular.module('MainDir', [])
 		restrict: 'A',
 		link: function(scope, element, attributes) {
 
-			var container;
-		    var camera, scene, renderer;
-		    var geometry, group;
+		    var container, camera, scene, renderer, geometry, group;
 		   	var mouseX = 0, mouseY = 0;
 		    var windowHalfX = window.innerWidth / 2;
 		    var windowHalfY = window.innerHeight / 2;
 
-		    var elements = $('#main a, #main span')
+		    var elements = $('#main a, #main span');
 		    var time = 200;
+
 		    $.each(elements, function(index, value) {
 		    	var elem = this;
 		    	setTimeout(function(){
 		    		$(elem).css('opacity', 1);
-		    	}, time += 400)
-		    })
+		    	}, time += 400);
+		    });
 
 		    $(document).ready(function() {
 		     	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
@@ -39,16 +38,16 @@ angular.module('MainDir', [])
 		       	scene = new THREE.Scene();
 
 		        var geometries = [];
-		        for(var i=0; i < 2000; i++) {
+		        for( var i = 0; i < 2000; i++ ) {
 		       	   	var geometry = new THREE.Geometry();
 		           	var x = Math.random() * 100;
 		   	     	var y = Math.random() * 100;
-		       	   	var v1 = new THREE.Vector3(0,0,0)
-		           	var v2 = new THREE.Vector3(0,y,0)
-		           	var v3 = new THREE.Vector3(x,0,0)
-		           	geometry.vertices.push(v1)
-		           	geometry.vertices.push(v2)
-		           	geometry.vertices.push(v3)
+		       	   	var v1 = new THREE.Vector3(0,0,0);
+		           	var v2 = new THREE.Vector3(0,y,0);
+		           	var v3 = new THREE.Vector3(x,0,0);
+		           	geometry.vertices.push(v1);
+		           	geometry.vertices.push(v2);
+		           	geometry.vertices.push(v3);
 		           	geometry.faces.push(new THREE.Face3(0,2,1));
 		           	geometries[i] = geometry;
 		       	}
@@ -118,7 +117,7 @@ angular.module('MainDir', [])
 
 		        group = new THREE.Object3D();
 
-		        for ( var i = 0; i < geometries.length; i ++ ) {
+		        for ( i = 0; i < geometries.length; i ++ ) {
 		           var mesh = new THREE.Mesh( geometries[i], materials[Math.floor(Math.random() * materials.length)] );
 		           mesh.position.x = Math.random() * 2000 - 1000;
 		           mesh.position.y = Math.random() * 2000 - 1000;
@@ -138,11 +137,7 @@ angular.module('MainDir', [])
 		       	renderer.setClearColor( '#f7f7f7', 1);
 		       	container.appendChild( renderer.domElement );
 
-		       	setTimeout(function() {
-			        scene.add( group );
-
-		       	}, 2700)
-
+				scene.add( group );
 		       	window.addEventListener( 'resize', onWindowResize, false );
 			}
 
@@ -162,8 +157,6 @@ angular.module('MainDir', [])
                 mouseY = ( event.clientY - windowHalfY ) * 2;
             }
 
-            //
-
             function animate() {
 
                 requestAnimationFrame( animate );
@@ -172,8 +165,8 @@ angular.module('MainDir', [])
             }
 
             function render() {
-               camera.position.x += ( mouseX - camera.position.x ) * .0080;
-                camera.position.y += ( - mouseY - camera.position.y ) * .0080;
+               camera.position.x += ( mouseX - camera.position.x ) * 0.0080;
+                camera.position.y += ( - mouseY - camera.position.y ) * 0.0080;
 
                 camera.lookAt( scene.position );
 
@@ -186,7 +179,7 @@ angular.module('MainDir', [])
             } 
 
 		} 
-	}
+	};
 })
 
 // checks initial window size to determine sizing. This directive also resizes when window is resized
@@ -198,7 +191,7 @@ angular.module('MainDir', [])
 				var height = $(window).height();
 				var width = $(window).width();
 				element.css('height', height + 'px');
-			})
+			});
 
 			$(window).resize(function() {
 				var height = $(window).height();
@@ -206,9 +199,9 @@ angular.module('MainDir', [])
 				element.css('height', height + 'px');
 
 				$(window).scrollTop($(window).height());
-			})
+			});
 		}
-	}
+	};
 })
 
 .directive('animNav', function() {
@@ -217,7 +210,7 @@ angular.module('MainDir', [])
 		link: function(scope, element, attributes) {
 			$(function() {
 				$(window).scrollTop(0);
-			})
+			});
 
 			$('.swipe').on('click', function(event) {
 				$('.mobile-navbar').toggleClass('mobile-navbar-view');
@@ -227,15 +220,15 @@ angular.module('MainDir', [])
 			
 			var list = $('.navlink');
 			var time = 500;
-			for (var i =0; i <list.length; i++) {
-				$.each(list, function() {
-					var elem = this;
-					setTimeout(function() {
-						$(elem).removeClass('notViewed');
-						$(elem).addClass('view');
-					}, time += 250);
-				})
-			}
+			// for (var i =0; i <list.length; i++) {
+			$.each(list, function() {
+				var elem = this;
+				setTimeout(function() {
+					$(elem).removeClass('notViewed');
+					$(elem).addClass('view');
+				}, time += 250);
+			});
+			// }
 			
 			var lastScrollTop = 0;
 			setInterval(function() {
@@ -245,7 +238,7 @@ angular.module('MainDir', [])
 
 			$(window).on('scroll', function(event){
 				var st = $(this).scrollTop();
-				if (st == 0) {
+				if (st === 0) {
 					$('.navbar').css('opacity', 1);
 	  				$('.navlink').addClass('view');
 				}
@@ -263,7 +256,7 @@ angular.module('MainDir', [])
 			   // lastScrollTop = st;
 			});
 		}
-	}
+	};
 })
 .directive('sizeResume', function() {
 	return{
@@ -276,9 +269,9 @@ angular.module('MainDir', [])
 				$('#frame').css('margin-top', height * 0.05 + 'px');
 				$('#frame').css('margin-bottom', height * 0.05 + 'px');
 				$('#frame').css('display', 'inline');
-			})
+			});
 		}
-	}
+	};
 })
 
 // directive for displaying instagram photos onto /instagram
@@ -304,9 +297,9 @@ angular.module('MainDir', [])
 					var newPhotoElementATag = angular.element("<a></a>");
 			        newPhotoImage = angular.element("<img>");
 
-					var caption = newPhoto.caption != null ? newPhoto.caption.text : ""
+					var caption = newPhoto.caption !== null ? newPhoto.caption.text : "";
 					var link = $(window).width() > 480 ? newPhoto.images.standard_resolution.url : newPhoto.images.low_resolution.url;
-					var newPhotoClass = $(window).width() > 767 ? "instagram-image" : "instagram-medium"
+					var newPhotoClass = $(window).width() > 767 ? "instagram-image" : "instagram-medium";
 
 			        newPhotoImage
 			        	.addClass(newPhotoClass)
@@ -328,7 +321,7 @@ angular.module('MainDir', [])
 			    $("#instagram").append(container);
 			}
 		}
-	}
+	};
 })
 
 .directive('geoPhotos', function() {
@@ -336,10 +329,13 @@ angular.module('MainDir', [])
 		restrict: 'A',
 		link: function(scope, element, attributes) {
 			if ($(window).width() > 767) {
-				$('.angular-google-map-container').css('height', '500px')
+				$('.angular-google-map-container').css('height', '500px');
 				$('.search').css('width', '50%');
 			  	photoclass = "instagram-image";
-			  } else photoclass = "instagram-medium"
+			  } 
+			else {
+				photoclass = "instagram-medium";
+			}
 
 			function createGeoPhoto(photo) {
 				return $('<div class>')
@@ -357,26 +353,32 @@ angular.module('MainDir', [])
 	            )
 	        	);
 			}
+
 			scope.$watch('geoPhotos', function callback(newVal, oldVal) {
 				if (newVal) {
 					$('#geophotos').empty();
 					for (var i = 0; i < newVal.length; i++) {
-						$('#geophotos').append(createGeoPhoto(scope.geoPhotos[i]))
+						$('#geophotos').append(createGeoPhoto(scope.geoPhotos[i]));
 					}
 					$('#geophotos').append('<div style="clear: both">');
 				}
-			})
+			});
+
 			scope.$watch('geoPhotos.length', function callback(newVal, oldVal) {
 				if (newVal) {
+
 					$('#geophotos').empty();
+
 					for (var i = 0; i < newVal; i++) {
-						$('#geophotos').append(createGeoPhoto(scope.geoPhotos[i]))
+						$('#geophotos').append(createGeoPhoto(scope.geoPhotos[i]));
 					}
+
 					$('#geophotos').append('<div style="clear: both">');
 				}
-			})
+			});
 		}
-}})
+	};
+})
 
 .directive('blogAnimator', function($timeout) {
 	return {
@@ -391,7 +393,7 @@ angular.module('MainDir', [])
 				$('.blog').addClass('viewed');
 			}, 2900);
 		}
-	}
+	};
 })
 
 .directive('customOnChange', function() {
@@ -410,15 +412,15 @@ angular.module('MainDir', [])
 		link: function (scope, element, attributes) {
 			element.on('keyup', function() {
 				autoExpand();
-			})
+			});
 
 			function autoExpand () {
     			var scrollHeight = $(element).prop("scrollHeight") - 60;
         		element.css('height', scrollHeight + "px");    
-    		};
+    		}
 
 		}
-	}
+	};
 })
 
 ;

@@ -1,4 +1,4 @@
-var myapp = angular.module('myApp', ['ngRoute', 'appRoutes', 'ngSanitize', 'ui.bootstrap', 'nemLogging', 'uiGmapgoogle-maps', 'angular-google-analytics', 'MainDir', 'BlogCtrl', 'InstagramCtrl', 'MapCtrl', 'TwitterCtrl', 'BlogService', 'AdminCtrl']);
+var myapp = angular.module('myApp', ['ngRoute', 'appRoutes', 'ngSanitize', 'ui.bootstrap', 'uiGmapgoogle-maps', 'angular-google-analytics', 'MainDir', 'BlogCtrl', 'InstagramCtrl', 'LoginCtrl', 'BlogService']);
 
 myapp.config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({

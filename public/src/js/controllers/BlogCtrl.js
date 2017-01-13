@@ -22,8 +22,8 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 					for (var i = 0; i < $scope.blogs.length; i++) {
 						if ($scope.blogs[i].url == blogTitle) {
 							$scope.article = $scope.blogs[i];
-						};
-					};
+						}
+					}
 				}();
 				$scope.selected = {};
 				$scope.filteredBlogs = $scope.blogs;
@@ -49,13 +49,15 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 		$scope.view = type;
 
 		return;
-	}
+	};
 
 	$scope.selectBlog = function(blog) {
 
-		return $scope.selected = blog;
+		$scope.selected = blog;
 
-	}
+		return;
+
+	};
 
 	$scope.createBlog = function() {
 
@@ -70,9 +72,9 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 					};
 
 					return 	getBlogs();
-				})
+				});
 		}
-	}
+	};
 
 	$scope.deleteBlog = function() {
 
@@ -87,8 +89,9 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 
 				return window.alert("An error occurred while removing blog post.");
 
-			})
-	}
+			}
+		);
+	};
 
 
 	$scope.uploadFile = function(event) {
@@ -102,7 +105,7 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 			$scope.newBlogData.content[itemName].src = data;
 			$scope.$digest();
 
-		}
+		};
 
 		r.readAsDataURL(file);
 	};
@@ -124,7 +127,7 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 				index: $scope.newBlogData.content.length,
 				type: "text",
 				text: ""
-			}
+			};
 
 			$scope.newBlogData.content.push(newTextItem);
 		}
@@ -135,7 +138,7 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 				index: $scope.newBlogData.content.length,
 				type: "image",
 				src: ""
-			}
+			};
 
 			$scope.newBlogData.content.push(newImageItem);
 		}
@@ -146,13 +149,14 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
 				index: $scope.newBlogData.content.length,
 				type: "iframe",
 				src: ""
-			}
+			};
 
 			$scope.newBlogData.content.push(newIframeItem);
 		}
 
 		return;
 	};
+
 	$scope.remove = function(index) {
 
 		for (var i = 0; i < $scope.newBlogData.content.length; i++) {
@@ -167,4 +171,5 @@ angular.module('BlogCtrl', []).controller('BlogController', ['$scope', '$http', 
   	$scope.trustSrc = function(src) {
     	return $sce.trustAsResourceUrl(src);
   	};
+  	
 }]);

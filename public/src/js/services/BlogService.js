@@ -11,5 +11,5 @@ angular.module('BlogService', []).factory('Blog', ['$http', function($http) {
 		delete : function(id) {
 			return $http.delete('/api/blogs/' + id);
 		}
-	}
+	};
 }]);

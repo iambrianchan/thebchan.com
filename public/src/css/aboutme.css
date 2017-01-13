@@ -80,4 +80,7 @@
 	article.content #contact p {
 		font-size: 16px;
 	}
+	article.content .intro img {
+	width: 100%;
+	}
 }

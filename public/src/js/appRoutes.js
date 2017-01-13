@@ -13,7 +13,7 @@
 
         .when('/media', {
             templateUrl: 'public/src/views/partials/media.html',
-            controller: 'MapController'
+            controller: 'InstagramController'
         })
 
         .when('/aboutme', {
@@ -30,20 +30,16 @@
             controller: 'BlogController'
         })
 
-        .when('/admin/:url', {
-            templateUrl: 'public/src/views/partials/admin-blog-detail.html',
-            controller: 'BlogController'
+        .when('/login', {
+            templateUrl: 'public/src/views/partials/login.html',
+            controller: 'LoginController'
         })
 
         .when('/admin', {
             templateUrl: 'public/src/views/partials/admin.html',
             controller: 'BlogController'
         })
-
-        .when('/login', {
-            templateUrl: 'public/src/views/partials/login.html',
-            controller: 'AdminController'
-        })
+        .otherwise('/');
 
     $locationProvider.html5Mode(true);
 

@@ -1,5 +1,5 @@
 // public/js/controllers/AdminCtrl.js
-angular.module('AdminCtrl', []).controller('AdminController', ['$scope', '$http', '$window', function($scope, $http, $window) {
+angular.module('LoginCtrl', []).controller('LoginController', ['$scope', '$http', '$window', function($scope, $http, $window) {
 
 	$scope.credentials = {};
 	$scope.image = "";
@@ -23,7 +23,9 @@ angular.module('AdminCtrl', []).controller('AdminController', ['$scope', '$http'
 
 			.then(function onSuccess() {
 
-				return $window.location.href = '/admin';
+				$window.location.href = '/admin';
+
+				return;
 
 			}, function onError(error) {
 

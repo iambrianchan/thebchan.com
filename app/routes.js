@@ -7,8 +7,13 @@ var request = require('request');
 var session = require('express-session');
 var redis = require('redis');
 var RedisStore = require('connect-redis')(session);
+var Instagram = require('instagram-node-lib');
 var access_token;
 
+// Configure Instagram NodeJS library
+Instagram.set('client_id', 'be9a87d452de4b7cb154f6cc259280ad');
+Instagram.set('client_secret', 'b4c402017a03419ba841274d43472c7d');
+Instagram.set('access_token', '14672124.be9a87d.7a7916688466452dbd9e5b97e354ac87');
 
 // import environment configuration
 var config = require('./../env.json').production;
@@ -147,6 +152,19 @@ module.exports = function(app) {
 		});
 	});
 
+  app.get('/instagram', function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    Instagram.users.recent({
+      user_id: 14672124,
+      count: 25,
+      complete: function(data, pagination) {
+        chunk = { 'data': data };
+        res.send(chunk);
+      }
+    })
+  });
 	app.post('/login', passport.authenticate('local'), function(req, res) {
 
 		res.redirect('/admin');

@@ -1,3 +1,7 @@
+html, html a {
+    -webkit-font-smoothing: antialiased;
+}
+
 .table{
     display:table;
     height: 100%;
@@ -16,13 +20,13 @@
 }
 
 .about a{
-	font-size: 36px;
+	font-size: 60px;
 	opacity: 0;
 	-webkit-transition: all .25s ease-in;
 }
 
 .social a {
-	font-size: 22px;
+	font-size: 36px;
 	opacity: 0;
 	-webkit-transition: all .25s ease-in;
 }
@@ -37,7 +41,6 @@
 }
 
 #main div a {
-	/*display: none;*/
 	text-decoration: none;
 	color: black;
 }
@@ -50,10 +53,18 @@ canvas {
 
 #main span {
 	opacity: 0;
-	font-size: 22px;
+	font-size: 36px;
 	-webkit-transition: all 1s ease-in;
 }
 
-html, html a {
-    -webkit-font-smoothing: antialiased;
+@media screen and (max-width: 480px) {
+	#main span {
+		font-size: 22px;
+	}
+	.about a {
+		font-size: 36px;
+	}
+	.social a {
+		font-size: 22px;
+	}
 }
