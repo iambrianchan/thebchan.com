@@ -9,11 +9,31 @@ var mongoose	   = require('mongoose');
 var passport	   = require('passport');
 var LocalStrategy  = require('passport-local');
 var session        = require('express-session');
-var config		   = require('./env.json');
-
+var config         = require('./env.json');
+var winston        = require('winston');
 
 // configuration ===========================================
 
+winston.add(
+  winston.transports.File, {
+    filename: 'info.log',
+    level: 'info',
+    json: false,
+    eol: '\n', // for Windows, or `eol: ‘n’,` for *NIX OSs
+    timestamp: true
+  }
+);
+
+(function() {
+    var exLog = console.log;
+    console.log = function(msg) {
+        exLog.apply(this, arguments);
+        winston.info(msg);
+    }
+})()
+
+
+setInterval(function(){winston.info('kdjfls')}, 1000);
 var port = process.env.PORT || 4000; 
 mongoose.connect(config.development.db);
 
