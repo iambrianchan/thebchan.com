@@ -32,8 +32,6 @@ winston.add(
     }
 })()
 
-
-setInterval(function(){winston.info('kdjfls')}, 1000);
 var port = process.env.PORT || 4000; 
 mongoose.connect(config.development.db);
 
