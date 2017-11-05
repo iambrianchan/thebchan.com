@@ -3,7 +3,6 @@ var Users = require('./models/user');
 var Blog = require('./models/blog');
 var passport	   = require('passport');
 var LocalStrategy  = require('passport-local');
-var request = require('request');
 var session = require('express-session');
 var redis = require('redis');
 var RedisStore = require('connect-redis')(session);
