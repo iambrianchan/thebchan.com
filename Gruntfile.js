@@ -106,6 +106,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-  grunt.registerTask('default', ['jshint', 'ngAnnotate', 'uglify', 'modernizr:dist', 'cssmin','clean', 'nodemon']); 
-
+  grunt.registerTask('default', ['jshint', 'ngAnnotate', 'uglify', 'modernizr:dist', 'cssmin','clean']);
 };

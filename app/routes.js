@@ -15,7 +15,7 @@ Instagram.set('client_secret', 'b4c402017a03419ba841274d43472c7d');
 Instagram.set('access_token', '14672124.be9a87d.7a7916688466452dbd9e5b97e354ac87');
 
 // import environment configuration
-var config = require('./../env.json').development;
+var config = require('./../env.json').production;
 
 // create redis client
 var options = {
