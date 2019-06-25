@@ -8,6 +8,10 @@
 	padding-top: 30px;
 }
 
+#instagram {
+	text-align: center;
+}
+
 .search {
 	margin: auto;
 	width: 100%;
@@ -68,7 +72,10 @@
 }
 
 .instagram-image {
-	width: 100%;
+	width: 400px;
+	height: 230px;
+	margin: 8px;
+	object-fit: cover;
 }
 
 .instagram-medium {
@@ -103,9 +110,4 @@
 		width: 100%;
 		padding-bottom: 10px;
 	}
-
-	.instagram-image {
-		width: 70%;
-	}
-
 }

@@ -287,39 +287,26 @@ angular.module('MainDir', [])
 				}
 			});
 			
-			function loadPhotos(photos) {
-				var container = angular.element("<div></div>");
-				container.addClass("row-fluid");
+            function loadPhotos(photos) {
+                var container = angular.element("<div></div>");
+                container.addClass("row-fluid");
 
-				for (var i = 0; i < photos.length; i++) {
-					var newPhoto = photos[i];
-					var newPhotoElement = angular.element("<div></div>");
-					var newPhotoElementATag = angular.element("<a></a>");
-			        newPhotoImage = angular.element("<img>");
+                for (var i = 0; i < photos.length; i++) {
+                    var newPhoto = photos[i];
+                    newPhotoImage = angular.element("<img>");
 
-					var caption = newPhoto.caption !== null ? newPhoto.caption.text : "";
-					var link = $(window).width() > 480 ? newPhoto.images.standard_resolution.url : newPhoto.images.low_resolution.url;
-					var newPhotoClass = $(window).width() > 767 ? "instagram-image" : "instagram-medium";
+                    var caption = newPhoto.caption !== null ? newPhoto.caption.text : "";
+                    var link = $(window).width() > 480 ? newPhoto.images.standard_resolution.url : newPhoto.images.low_resolution.url;
+                    var newPhotoClass = $(window).width() > 767 ? "instagram-image" : "instagram-medium";
 
-			        newPhotoImage
-			        	.addClass(newPhotoClass)
-		                .attr('src', link);
-					newPhotoElementATag
-						.attr('target', '_blank')
-			            .attr('href', link)
-			            .attr('title', caption)
-			            .append(newPhotoImage);
-					newPhotoElement
-						.addClass('col-lg-5ths')
-				        .addClass('col-md-5ths')
-				        .addClass('col-xs-5ths')
-			        	.attr('id', newPhoto.id)
-			        	.append(newPhotoElementATag);
+                    newPhotoImage
+                        .addClass(newPhotoClass)
+                        .attr('src', link);
 
-			        container.append(newPhotoElement);
-			    }
-			    $("#instagram").append(container);
-			}
+                    container.append(newPhotoImage);
+                }
+                $("#instagram").append(container);
+            }
 		}
 	};
 })

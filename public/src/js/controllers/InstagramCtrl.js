@@ -21,7 +21,7 @@ angular.module('InstagramCtrl', []).controller('InstagramController', ['$scope',
 
 	function loadPhotos() {
 			var photos;
-			var url = 'https://thebchan.herokuapp.com/instagram';
+			var url = '/instagram';
 			
 			$http.get(url)
 				.then(function success(response) {
@@ -68,12 +68,18 @@ angular.module('InstagramCtrl', []).controller('InstagramController', ['$scope',
     		$http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + photo.location.latitude + ',' + photo.location.longitude + '&key=AIzaSyDfT_pBfZwAw59bn3BkPrjiKPb_ylmXYUg')
 	    		.then(function success(response) {
 	    			var j = response.data.results.length;
-	    			while ($.inArray(type, response.data.results[--j].types) == -1) {
+	    			try {
+		    			while ($.inArray(type, response.data.results[--j].types) == -1) {
+		    			}
+
+		    			if (response.data.results[j].formatted_address == place[0].formatted_address) {
+		    				$scope.geoPhotos.push(photo);
+		    			}
 	    			}
 
-	    			if (response.data.results[j].formatted_address == place[0].formatted_address) {
-	    				$scope.geoPhotos.push(photo);
+	    			catch (err) {
 	    			}
+
 	    			return;
 	    		}, function error() {
 	    			return console.log('Unable to return geocode data');

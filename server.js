@@ -11,7 +11,7 @@ var LocalStrategy  = require('passport-local');
 var session        = require('express-session');
 var config         = require('./env.json');
 var winston        = require('winston');
-
+var db = require('./env.json').production.db;
 // configuration ===========================================
 
 winston.add(
@@ -32,8 +32,8 @@ winston.add(
     }
 })()
 
-var port = process.env.PORT || 4000; 
-mongoose.connect(config.development.db);
+var port = process.env.PORT || 8080; 
+mongoose.connect(db);
 
 app.set('views', __dirname + '/public/src/views');
 app.set('view engine', 'pug');
