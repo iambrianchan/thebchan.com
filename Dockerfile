@@ -8,6 +8,7 @@ COPY yarn.lock .
 RUN yarn install
 
 COPY . .
+RUN ./node_modules/grunt/bin/grunt
 
 EXPOSE 8080
 
